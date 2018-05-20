@@ -8,12 +8,14 @@
 /* Header files */
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 
 /* Constants */
 #define FALSE 0
 #define TRUE 1
 #define m 4
 #define n 4
+#define EPSILON 1e-6
 
 #define SHOW_WORK 0
 
@@ -62,7 +64,7 @@ void rref(double A[m][n]) {
 		/* Swap rows to position anchor */
 		anchorExists = FALSE;
 		for (int a = anchor; a < m; a++) {
-			if (A[a][j] != 0) {
+			if (fabs(A[a][j]) > EPSILON) {
 
 				swap(A, a, anchor);
 				anchorExists = TRUE;
